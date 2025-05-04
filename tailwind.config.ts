@@ -1,13 +1,18 @@
-import type {Config} from "tailwindcss";
+import type { Config } from "tailwindcss";
 
-const config: Config = {
+const config: Config & { safelist: string[] } = {
     darkMode: ["class", "dark"],
     content: [
         "./pages/**/*.{js,ts,jsx,tsx,mdx}",
         "./components/**/*.{js,ts,jsx,tsx,mdx}",
         "./app/**/*.{js,ts,jsx,tsx,mdx}",
         "./sanity/**/*.{js,ts,jsx,tsx,mdx}",
+        "./styles/**/*.{css,scss}"
     ],
+    safelist: [
+        'bg-primary',
+        'bg-primary-100',
+      ],
     theme: {
         extend: {
             screens: {
@@ -45,6 +50,7 @@ const config: Config = {
             },
         },
     },
+
     plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };
 
